@@ -1,0 +1,110 @@
+
+<html>
+    <head>
+        <link href="musicplayer.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+    </head>
+    <body>
+        <div id="music">
+       <h3 id="title">MUSIC PLAYER</h3>
+       <img src= "" id="image">
+       <h4 id="song">Title:</h4>
+       <p id="artist">Artist</p>
+       <input type ="range" id="range"><br>
+       <audio src="" id="audio"></audio>
+       <button id="forward" onclick="previous_play()"><i class="fa fa-backward"></i></button>
+       <button id="play" onclick="play_audio()" min = "0" max = "100" value="0"><i class="fa fa-play"></i></button>
+       <button id="backward" onclick="next_play()"><i class="fa fa-forward"></i></button>
+    </div>
+     <script>
+        
+
+        let image = document.getElementById("image");
+        let audio = document.getElementById("audio");
+        let slider = document.getElementById("range");
+
+        var auto_play = false;
+         var index_no = 0;
+
+
+
+        let all = [{
+            name:"SIRIKALAM PARAKALAM",
+            artist:"Benny Dayal",
+            image:"C:\\Users\\subaganesh\\Downloads\\800x800cc.jpg",
+            audio:"E:\Sirikkalam-Parakkalam-MassTamilan.io.mp3" 
+        }, 
+       {
+            name:"Avalum Naanum",
+            artist:"Sid Sriram",
+            audio:"E:\Avalum-Naanum.mp3",
+            image:"C:\\Users\\subaganesh\\Downloads\\avalum-naanum-amudhum-thamizhum-lyrics-translation.jpg"
+       }
+       
+]
+        
+        function load(index_no){
+            reset_slider()
+
+            document.getElementById("song").innerHTML = all[0].name;
+            document.getElementById("artist").innerHTML = all[0].artist;
+            image.src = all[0].image;
+            audio.src = all[0].audio;
+        }
+
+        load();
+          
+        function load2(){
+            reset_slider()
+
+            document.getElementById("song").innerHTML = all[1].name;
+            document.getElementById("artist").innerHTML = all[1].artist;
+            image.src = all[1].image;
+            audio.src = all[1].audio;
+        }
+        
+        function play_audio(){
+            if(auto_play == false){
+                audio_play();
+            }
+            
+            else{
+                audio_pause();
+            }
+
+        }
+          
+        function reset_slider(){
+            slider.value = 0;
+        }
+      
+        function audio_play(){
+            audio.play();
+            auto_play = true;
+            document.getElementById("play").innerHTML='<i class="fa fa-pause"></i>';
+
+        }
+        function audio_pause(){
+            audio.pause();
+            auto_play = false;
+            document.getElementById("play").innerHTML='<i class="fa fa-play"></i>';
+            
+        }
+
+        function next_play(){
+                 load2();
+                 play_audio();
+        }
+
+        function previous_play(){
+                 load();
+                 play_audio();
+        }
+
+        
+    
+     </script>
+    
+    </body>
+</html>
+    
