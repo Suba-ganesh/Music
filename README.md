@@ -1,1 +1,1 @@
-# Music-Player Creates Using HTML, CSS and Javascript
+# Music-Player Created Using HTML, CSS and Javascript
